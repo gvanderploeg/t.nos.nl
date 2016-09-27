@@ -4,24 +4,34 @@ import './App.css';
 
 class App extends Component {
 
+  
 constructor(props) {
     super(props);
     this.state = {
-      title: 'initial'
+      title: 'initial',
+      items: []
     };
   }
 
 
-  componentDidMount() {
-    this.serverRequest = fetch(this.props.source, {
-      mode: 'no-cors'
-    })
-    .then(function(response) {
+  parseRss(rss) {
+    var doc = new DOMParser().parseFromString(rss, "text/xml");
+
       this.setState({
-        title: "" + response.data
-      })
-      
+        title: "Doc found!",
+        items: [].slice.call(doc.getElementsByTagName("item"))
+      });
+      console.log(this.state.items[0]);
+
+  }
+  componentDidMount() {
+    this.serverRequest = fetch(this.props.source)
+      // TODO: keep and parse it like a stream, instead of consuming the stream here.
+    .then(r => r.text())
+    .then(function(text) {
+      this.parseRss(text);      
     }.bind(this));
+    
   }
 
   componentWillUnmount() {
@@ -32,7 +42,14 @@ constructor(props) {
   render() {
       return (
          <div>
-        Title is: {this.state.title}</div>
+          <h3>Title is: {this.state.title}</h3>
+          <ul>
+          {this.state.items.map(function(item, x) {
+              return <li key={x}>{x}: {item.childNodes[1].innerHTML}</li>;
+          })}
+            
+          </ul>
+        </div>
       );
     
   }
