@@ -12,7 +12,7 @@ class App extends Component {
 constructor(props) {
     super(props);
     this.state = {
-      title: 'initial',
+      title: 'Loading...',
       items: []
     };
   }
@@ -45,16 +45,19 @@ constructor(props) {
       return (
          <div>
           <h2>{this.state.title}</h2>
-          <Accordion>
-
-          {this.state.items.map(function(item, x) {
-                var content = item.childNodes[7].textContent;
-                var contentParagraphs = content.split('\n').map(t => {
-                    return <p key={t}>{t}</p>;
-                })
-                return <AccordionItem key={x} slug={x} title={item.childNodes[1].textContent}>{contentParagraphs}</AccordionItem>
-          })}
-        </Accordion>
+          {(this.state.items.length > 0) ? (
+            <Accordion>
+            {this.state.items.map(function(item, x) {
+                  var content = item.childNodes[7].textContent;
+                  var contentParagraphs = content.split('\n').map(t => {
+                      return <p key={t}>{t}</p>;
+                  })
+                  return <AccordionItem key={x} slug={x} title={item.childNodes[1].textContent}>{contentParagraphs}</AccordionItem>
+            })}
+            </Accordion>
+          ) : (<img src="throbber.gif" />)}
+          
+          
         </div>
       );
     

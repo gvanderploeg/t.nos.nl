@@ -4,7 +4,7 @@ import App from './App';
 import './index.css';
 
 /*
-http://crossorigin.me/http://feeds.nos.nl/nosnieuwsalgemeen
+https://crossorigin.me/http://feeds.nos.nl/nosnieuwsalgemeen
 */
 
 ReactDOM.render(
