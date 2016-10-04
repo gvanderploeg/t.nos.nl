@@ -2,7 +2,7 @@
 
 ## Why
 
-Because t.nos.nl has quit, and teletekst is presented as its successor.
+Because t.nos.nl has quit, and ugly teletekst is presented as its successor.
 
 ## How
 
@@ -10,7 +10,7 @@ Because t.nos.nl has quit, and teletekst is presented as its successor.
 * crossorigin.me, a 'cors proxy'
 * NOS's RSS feed ('nieuwsalgemeen')
 
-## When
+## When and where
 
 Now, at https://gvanderploeg.github.io/t.nos.nl/
 
