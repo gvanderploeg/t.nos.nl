@@ -6,11 +6,13 @@ Because t.nos.nl has quit, and teletekst is presented as its successor.
 
 ## How
 
-React.js, a javascript framework to build interactive websites with.
+* React.js, a javascript framework to build interactive websites with.
+* crossorigin.me, a 'cors proxy'
+* NOS's RSS feed ('nieuwsalgemeen')
 
 ## When
 
-When it's done. No sooner, no later.
+Now, at https://gvanderploeg.github.io/t.nos.nl/
 
 ## Who
 
