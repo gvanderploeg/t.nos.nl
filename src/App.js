@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 import './App.css';
+//import ListItem from './ListItem.js';
+//import Collapse from 'rc-collapse';
+//var Panel = Collapse.Panel;
+import { Accordion, AccordionItem } from 'react-sanfona';
 
 class App extends Component {
 
@@ -13,15 +17,13 @@ constructor(props) {
     };
   }
 
-
   parseRss(rss) {
     var doc = new DOMParser().parseFromString(rss, "text/xml");
 
       this.setState({
-        title: "Doc found!",
+        title: [].slice.call(doc.getElementsByTagName('title'))[0].textContent,
         items: [].slice.call(doc.getElementsByTagName("item"))
       });
-      console.log(this.state.items[0]);
 
   }
   componentDidMount() {
@@ -29,7 +31,7 @@ constructor(props) {
       // TODO: keep and parse it like a stream, instead of consuming the stream here.
     .then(r => r.text())
     .then(function(text) {
-      this.parseRss(text);      
+      this.parseRss(text);
     }.bind(this));
     
   }
@@ -42,13 +44,17 @@ constructor(props) {
   render() {
       return (
          <div>
-          <h3>Title is: {this.state.title}</h3>
-          <ul>
+          <h2>{this.state.title}</h2>
+          <Accordion>
+
           {this.state.items.map(function(item, x) {
-              return <li key={x}>{x}: {item.childNodes[1].innerHTML}</li>;
+                var content = item.childNodes[7].textContent;
+                var contentParagraphs = content.split('\n').map(t => {
+                    return <p key={t}>{t}</p>;
+                })
+                return <AccordionItem key={x} slug={x} title={item.childNodes[1].textContent}>{contentParagraphs}</AccordionItem>
           })}
-            
-          </ul>
+        </Accordion>
         </div>
       );
     
