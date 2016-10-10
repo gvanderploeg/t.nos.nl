@@ -5,6 +5,7 @@ import './index.css';
 
 /*
 https://crossorigin.me/http://feeds.nos.nl/nosnieuwsalgemeen
+nos-rss.xml
 */
 
 ReactDOM.render(

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import './App.css';
+import Paragraph from './Paragraph.js';
+
 //import ListItem from './ListItem.js';
 //import Collapse from 'rc-collapse';
 //var Panel = Collapse.Panel;
@@ -50,12 +52,12 @@ constructor(props) {
             {this.state.items.map(function(item, x) {
                   var content = item.childNodes[7].textContent;
                   var contentParagraphs = content.split('\n').map(t => {
-                      return <p key={t}>{t}</p>;
+                    return <Paragraph key={t} text={t} />
                   })
                   return <AccordionItem key={x} slug={x} title={item.childNodes[1].textContent}>{contentParagraphs}</AccordionItem>
             })}
             </Accordion>
-          ) : (<img src="throbber.gif" />)}
+          ) : (<img role="presentation" src="throbber.gif" />)}
           
           
         </div>
