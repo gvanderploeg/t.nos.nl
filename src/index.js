@@ -9,6 +9,6 @@ nos-rss.xml
 */
 
 ReactDOM.render(
-  <App source="https://crossorigin.me/http://feeds.nos.nl/nosnieuwsalgemeen"/>,
+  <App source="nos-rss.xml"/>,
   document.getElementById('root')
 );

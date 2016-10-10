@@ -7,10 +7,11 @@
   },
   "dependencies": {
     "fetch": "1.0.0",
+    "moment": "^2.15.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "xml2object": "^0.1.2",
-    "react-sanfona": "0.0.15"
+    "react-sanfona": "0.0.15",
+    "xml2object": "^0.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
