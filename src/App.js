@@ -50,6 +50,14 @@ constructor(props) {
     return datestring;
   }
 
+  firstChildElementText(element, tagName) {
+    var children = element.getElementsByTagName(tagName);
+    if (children[0])
+      return element.getElementsByTagName(tagName)[0].textContent;
+    else 
+      return "";
+  }
+
   render() {
       return (
          <div>
@@ -58,10 +66,10 @@ constructor(props) {
           {(this.state.items.length > 0) ? (
             <Accordion>
             {this.state.items.map(function(item, x) {
-              var pubDate = item.childNodes[9].textContent;        
-              var content = item.childNodes[7].textContent;
-              var title = item.childNodes[1].textContent;
-              var link = item.childNodes[3].textContent
+              var pubDate = item.getElementsByTagName("pubDate")[0].textContent;
+              var content = item.getElementsByTagName("description")[0].textContent;
+              var title = item.getElementsByTagName("title")[0].textContent;
+              var link = item.getElementsByTagName("link")[0].textContent;
               return (<AccordionItem key={x} slug={x} title={title}>
                       <Article content={content} pubDate={pubDate} link={link} />
                     </AccordionItem>)

@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import Paragraph from './Paragraph';
+import ReactHtmlParser from 'react-html-parser';
 
 export default class Article extends Component {
 
 	render() {
 		return (<div>
-				{this.props.content.split('\n').map(t => {
-        			return <Paragraph key={t} text={t} />
-      			})}
+    				{ReactHtmlParser(this.props.content)}
+
       			<div className="articleFooter">
       				<a href={this.props.link}>{this.props.link}</a>
   				</div>

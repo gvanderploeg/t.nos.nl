@@ -47,8 +47,9 @@ body {
   max-width: 100%;
 }
 
-h4 {
+h2 {
   margin-bottom: 0px;
+  font-size: 1em;
 }
 p {
   margin-top: 0px;
