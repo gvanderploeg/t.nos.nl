@@ -1,0 +1,10 @@
+{
+	"short_name": "t.nos.nl",
+	"name": "NOS Nieuws, tekstueel, in de geest van t.nos.nl",
+	"description": "With react.js, https://github.com/gvanderploeg/t.nos.nl/",
+	"start_url": ".",
+	"display": "standalone",
+	"background_color": "#03a9f4",
+	"theme_color": "#03a9f4",
+	"orientation": "portrait"
+}
