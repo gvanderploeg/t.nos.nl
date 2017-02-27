@@ -70,6 +70,7 @@ class App extends Component {
     this.componentDidMount();
   }
 
+
   render() {
       return (
          <div>
@@ -78,7 +79,7 @@ class App extends Component {
             <a href="#" onClick={this.refresh}>{this.formatDateTime(this.state.pubDate)}</a>
           </div>
           {(this.state.items.length > 0) ? (
-            <Accordion>
+            <Accordion activeItem={-1}>
             {this.state.items.map(function(item, x) {
               var pubDate = item.getElementsByTagName("pubDate")[0].textContent;
               var content = item.getElementsByTagName("description")[0].textContent;
