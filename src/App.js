@@ -11,13 +11,18 @@ import { Accordion, AccordionItem } from 'react-sanfona';
 class App extends Component {
 
   
-constructor(props) {
+  constructor(props) {
     super(props);
-    this.state = {
+  
+    this.initialState = {
       title: 'Loading...',
       pubDate: new Date(),
       items: []
     };
+
+    this.state = this.initialState;
+    this.refresh = this.refresh.bind(this);
+
   }
 
   parseRss(rss) {
@@ -31,6 +36,8 @@ constructor(props) {
 
   }
   componentDidMount() {
+    this.state = this.initialState;
+    console.log("didmount");
     this.serverRequest = fetch(this.props.source)
       // TODO: keep and parse it like a stream, instead of consuming the stream here.
     .then(r => r.text())
@@ -58,11 +65,18 @@ constructor(props) {
       return "";
   }
 
+  refresh(e) {
+    e.preventDefault();
+    this.componentDidMount();
+  }
+
   render() {
       return (
          <div>
           <h2>{this.state.title}</h2>
-          <div className="pageSubTitle">{this.formatDateTime(this.state.pubDate)}</div>
+          <div className="pageSubTitle">
+            <a href="#" onClick={this.refresh}>{this.formatDateTime(this.state.pubDate)}</a>
+          </div>
           {(this.state.items.length > 0) ? (
             <Accordion>
             {this.state.items.map(function(item, x) {
