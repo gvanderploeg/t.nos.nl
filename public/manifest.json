@@ -1,0 +1,7 @@
+{
+	"short_name": "t.nos.nl",
+	"name": "NOS Nieuws, tekstueel, in de geest van t.nos.nl",
+	"start_url": "/index.html",
+	"display": "standalone",
+	"orientation": "portrait"
+}
